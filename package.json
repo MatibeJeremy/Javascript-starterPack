@@ -4,12 +4,14 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "esw webpack.config.* src buildScripts --color",
-    "lint:watch": "npm run lint -- --watch --color"
+    "lint:watch": "npm run lint -- --watch --color",
+    "test": "mocha --reporter progress builtScripts/testSetup.js \"src/**/*.spec.js\"",
+    "test:watch": "npm run test -- --watch"
   },
-  "author": "Cory House",
+  "author": "Matibe Jeremy",
   "license": "MIT",
   "dependencies": {
     "whatwg-fetch": "3.0.0"
@@ -23,8 +25,8 @@
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
+    "@babel/register": "^7.10.1",
     "babel-loader": "^8.1.0",
-    "babel-register": "6.26.0",
     "chai": "4.2.0",
     "chalk": "4.1.0",
     "cheerio": "0.22.0",
@@ -37,11 +39,12 @@
     "express": "4.17.1",
     "extract-text-webpack-plugin": "3.0.2",
     "html-webpack-plugin": "4.3.0",
-    "jsdom": "16.2.2",
+    "jsdom": "^16.2.2",
     "json-schema-faker": "0.4.7",
     "json-server": "0.16.1",
     "localtunnel": "2.0.0",
     "mocha": "8.0.1",
+    "mocha-jsdom": "^2.0.0",
     "nock": "12.0.3",
     "npm-run-all": "4.1.5",
     "numeral": "2.0.6",
