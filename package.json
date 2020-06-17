@@ -9,7 +9,7 @@
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch --color",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Matibe Jeremy",
   "license": "MIT",
